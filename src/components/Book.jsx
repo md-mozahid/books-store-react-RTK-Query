@@ -1,16 +1,26 @@
 import Descriptions from './Descriptions'
 
-const Book = () => {
+const Book = ({ book }) => {
+  const { thumbnail, featured } = book
+
+  // {
+  //   featured ? (
+  //     <span className="badge-success lws-Badge">featured</span>
+  //   ) : (
+  //     <span>{''}</span>
+  //   )
+  // }
+
   return (
     <div className="book-card">
       <img
         className="h-[240px] w-[170px] object-cover"
-        src="https://m.media-amazon.com/images/P/B07DZ86WP7.01._SCLZZZZZZZ_SX500_.jpg"
+        src={thumbnail}
         alt="book"
       />
       <div className="flex-1 h-full pr-2 pt-2 flex flex-col">
         <div className="flex items-center justify-between">
-          <span className="lws-badge">featured</span>
+          <span className="lws-badge">{featured ? 'featured' : null}</span>
           <div className="text-gray-500 space-x-2">
             <button className="lws-edit ">
               <svg
@@ -43,7 +53,7 @@ const Book = () => {
           </div>
         </div>
 
-        <Descriptions />
+        <Descriptions book={book} />
       </div>
     </div>
   )

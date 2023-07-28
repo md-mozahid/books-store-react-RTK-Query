@@ -25,6 +25,15 @@
       "price": 23.99,
       "rating": 4,
       "featured": true,
+      "id": 3
+    },
+    {
+      "name": "Md. Mozahid",
+      "author": "md",
+      "thumbnail": "https://m.media-amazon.com/images/P/B07DZ86WP7.01._SCLZZZZZZZ_SX500_.jpg",
+      "price": 11,
+      "rating": 5,
+      "featured": "false",
       "id": 4
     }
   ]

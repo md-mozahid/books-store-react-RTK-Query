@@ -1,10 +1,9 @@
-const Descriptions = () => {
+const Descriptions = ({ book }) => {
+  const { name, author, price, rating } = book
   return (
     <div className="space-y-2 mt-4 h-full">
-      <h4 className="lws-book-name">
-        Life Hurts: A Doctor's Personal Journey Through Anorexia
-      </h4>
-      <p className="lws-author">Dr Elizabeth McNaught</p>
+      <h4 className="lws-book-name">{name}</h4>
+      <p className="lws-author">{author}</p>
       <div className="lws-stars">
         <svg viewBox="0 0 20 20" fill="currentColor" className="star">
           <path
@@ -30,7 +29,7 @@ const Descriptions = () => {
           />
         </svg>
       </div>
-      <p className="lws-price">BDT 14</p>
+      <p className="lws-price">BDT {price}</p>
     </div>
   )
 }
