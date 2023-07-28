@@ -10,6 +10,7 @@ export const apiSlice = createApi({
     getBooks: builder.query({
       query: () => '/books',
     }),
+
     addBook: builder.mutation({
       query: (data) => ({
         url: '/books',
@@ -17,7 +18,16 @@ export const apiSlice = createApi({
         body: data,
       }),
     }),
+
+    editBook: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/books/${id}`,
+        method: 'PATCH',
+        body: data,
+      }),
+    }),
   }),
 })
 
-export const { useGetBooksQuery, useAddBookMutation } = apiSlice
+export const { useGetBooksQuery, useAddBookMutation, useEditBookMutation } =
+  apiSlice
