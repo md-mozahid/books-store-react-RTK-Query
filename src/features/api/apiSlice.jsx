@@ -30,8 +30,20 @@ export const apiSlice = createApi({
         body: data,
       }),
     }),
+
+    deleteBook: builder.mutation({
+      query: (id) => ({
+        url: `/books/${id}`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 })
 
-export const { useGetBooksQuery, useGetBookQuery, useAddBookMutation, useEditBookMutation } =
-  apiSlice
+export const {
+  useGetBooksQuery,
+  useGetBookQuery,
+  useAddBookMutation,
+  useEditBookMutation,
+  useDeleteBookMutation
+} = apiSlice
