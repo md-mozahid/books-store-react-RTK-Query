@@ -6,11 +6,13 @@ const Navbar = () => {
   return (
     <nav className="py-4 2xl:px-6">
       <div className="container flex items-center justify-between">
-        <img src={Logo} width="150px" className="object-contain" />
+        <Link to="/">
+          <img src={Logo} width="150px" className="object-contain" />
+        </Link>
 
         <ul className="hidden md:flex items-center space-x-6">
           <Link
-          to='/'
+            to="/"
             className="font-semibold cursor-pointer"
             href="index.html"
             id="lws-bookStore">

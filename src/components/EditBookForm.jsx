@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useEditBookMutation } from '../features/api/apiSlice'
 
@@ -36,8 +36,13 @@ const EditBookForm = ({ book }) => {
         featured,
       },
     })
-    navigate('/')
   }
+
+  useEffect(() => {
+    {
+      isSuccess && navigate('/')
+    }
+  }, [isSuccess])
 
   return (
     <div className="p-8 overflow-hidden bg-white shadow-cardShadow rounded-md max-w-xl mx-auto">
@@ -127,9 +132,14 @@ const EditBookForm = ({ book }) => {
           </label>
         </div>
 
-        <button type="submit" className="submit" id="lws-submit">
+        <button
+          disabled={isLoading}
+          type="submit"
+          className="submit"
+          id="lws-submit">
           Update Book
         </button>
+        {isError && <p>There was an error</p>}
       </form>
     </div>
   )

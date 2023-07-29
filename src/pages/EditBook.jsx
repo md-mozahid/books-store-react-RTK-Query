@@ -1,11 +1,10 @@
 import { useParams } from 'react-router-dom'
 import EditBookForm from '../components/EditBookForm'
-import { useGetBooksQuery } from '../features/api/apiSlice'
+import { useGetBookQuery } from '../features/api/apiSlice'
 
 const EditBook = () => {
   const { bookId } = useParams()
-  const { data: book, isLoading, isError } = useGetBooksQuery(bookId)
-  console.log(book)
+  const { data: book, isLoading, isError } = useGetBookQuery(bookId)
 
   let content = null
   if (isLoading) {
@@ -16,7 +15,7 @@ const EditBook = () => {
     content = <div>That was an error !</div>
   }
 
-  if (!isLoading && !isError && book?.id) {
+  if (!isLoading && !isError && book.id) {
     content = <EditBookForm book={book} />
   }
 
