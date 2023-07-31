@@ -13,6 +13,7 @@ const AddBook = () => {
   const [rating, setRating] = useState('')
   const [featured, setFeatured] = useState(false)
 
+
   const handleSubmit = (e) => {
     e.preventDefault()
     addBook({
