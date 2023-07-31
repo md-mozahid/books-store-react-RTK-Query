@@ -1,23 +1,15 @@
-import { Link } from 'react-router-dom'
-import { useDeleteBookMutation } from '../features/api/apiSlice'
-import Descriptions from './Descriptions'
+import { Link } from "react-router-dom";
+import { useDeleteBookMutation } from "../features/api/apiSlice";
+import Descriptions from "./Descriptions";
 
 const Book = ({ book }) => {
-  const { id, thumbnail, featured } = book
+  const { id, thumbnail, featured } = book;
 
-  const [deleteBook, { isLoading, isError }] = useDeleteBookMutation()
+  const [deleteBook, { isLoading, isError }] = useDeleteBookMutation();
 
   const handleDelete = () => {
-    deleteBook(id)
-  }
-
-  // {
-  //   featured ? (
-  //     <span className="badge-success lws-Badge">featured</span>
-  //   ) : (
-  //     <span>{''}</span>
-  //   )
-  // }
+    deleteBook(id);
+  };
 
   return (
     <div className="book-card">
@@ -28,7 +20,7 @@ const Book = ({ book }) => {
       />
       <div className="flex-1 h-full pr-2 pt-2 flex flex-col">
         <div className="flex items-center justify-between">
-          <span className="lws-badge">{featured ? 'featured' : null}</span>
+          <div>{featured && <span className="lws-badge">featured</span>}</div>
           <div className="text-gray-500 space-x-2">
             <Link to={`/edit-book/${id}`}>
               <button className="lws-edit ">
@@ -37,7 +29,8 @@ const Book = ({ book }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="w-6 h-6">
+                  className="w-6 h-6"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -52,7 +45,8 @@ const Book = ({ book }) => {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-6 h-6">
+                className="w-6 h-6"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -66,7 +60,7 @@ const Book = ({ book }) => {
         <Descriptions book={book} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Book
+export default Book;
