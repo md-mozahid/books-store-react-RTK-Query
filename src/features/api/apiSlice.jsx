@@ -6,13 +6,16 @@ export const apiSlice = createApi({
     baseUrl: 'http://localhost:9000',
   }),
 
+  tagTypes: ['books'],
   endpoints: (builder) => ({
     getBooks: builder.query({
       query: () => '/books',
+      providesTags: ['books'],
     }),
 
     getBook: builder.query({
       query: (id) => `/books/${id}`,
+      providesTags: (result, error, arg) => [{ type: 'book', id: arg }],
     }),
 
     addBook: builder.mutation({
@@ -21,6 +24,7 @@ export const apiSlice = createApi({
         method: 'POST',
         body: data,
       }),
+      invalidatesTags: ['books'],
     }),
 
     editBook: builder.mutation({
@@ -29,6 +33,10 @@ export const apiSlice = createApi({
         method: 'PATCH',
         body: data,
       }),
+      invalidatesTags: (result, error, arg) => [
+        'books',
+        { type: 'book', id: arg.id },
+      ],
     }),
 
     deleteBook: builder.mutation({
@@ -36,11 +44,8 @@ export const apiSlice = createApi({
         url: `/books/${id}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['books'],
     }),
-
-    // searchBook: builder.query({
-    //   query: (title) => `/books/${title}`,
-    // }),
   }),
 })
 

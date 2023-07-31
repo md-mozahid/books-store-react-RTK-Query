@@ -23,6 +23,15 @@ const EditBookForm = ({ book }) => {
   const [rating, setRating] = useState(initialRating)
   const [featured, setFeatured] = useState(initialFeatured)
 
+  const resetForm = () => {
+    setName('')
+    setAuthor('')
+    setThumbnail('')
+    setPrice('')
+    setRating('')
+    setFeatured('')
+  }
+
   const handleEdit = (e) => {
     e.preventDefault()
     editBook({
@@ -36,6 +45,7 @@ const EditBookForm = ({ book }) => {
         featured,
       },
     })
+    resetForm()
   }
 
   useEffect(() => {

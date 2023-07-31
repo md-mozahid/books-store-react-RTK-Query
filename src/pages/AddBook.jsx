@@ -13,6 +13,14 @@ const AddBook = () => {
   const [rating, setRating] = useState('')
   const [featured, setFeatured] = useState(false)
 
+  const resetForm = () => {
+    setName('')
+    setAuthor('')
+    setThumbnail('')
+    setPrice('')
+    setRating('')
+    setFeatured('')
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -25,6 +33,7 @@ const AddBook = () => {
       featured,
     })
     navigate('/')
+    resetForm()
   }
 
   return (
@@ -106,8 +115,8 @@ const AddBook = () => {
             type="checkbox"
             name="featured"
             className="w-4 h-4"
-            value={featured}
-            onChange={(e) => setFeatured(e.target.value)}
+            checked={featured}
+            onChange={(e) => setFeatured(!featured)}
           />
           <label htmlFor="lws-featured" className="ml-2 text-sm">
             {' '}
