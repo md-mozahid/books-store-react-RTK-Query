@@ -37,6 +37,10 @@ export const apiSlice = createApi({
         method: 'DELETE',
       }),
     }),
+
+    // searchBook: builder.query({
+    //   query: (title) => `/books/${title}`,
+    // }),
   }),
 })
 
@@ -45,5 +49,5 @@ export const {
   useGetBookQuery,
   useAddBookMutation,
   useEditBookMutation,
-  useDeleteBookMutation
+  useDeleteBookMutation,
 } = apiSlice

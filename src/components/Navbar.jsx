@@ -14,7 +14,6 @@ const Navbar = () => {
           <Link
             to="/"
             className="font-semibold cursor-pointer"
-            href="index.html"
             id="lws-bookStore">
             <li>Book Store</li>
           </Link>

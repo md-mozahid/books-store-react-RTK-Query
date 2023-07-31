@@ -1,4 +1,15 @@
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { bySearch } from '../features/filter/filterSlice'
+
 const Search = () => {
+  const [search, setSearch] = useState('')
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(bySearch(search))
+  }, [search])
+
   return (
     <form className="flex items-center">
       <div className="group relative rounded-md bg-white">
@@ -17,6 +28,8 @@ const Search = () => {
           placeholder="Filter books..."
           className="search"
           id="lws-search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
     </form>

@@ -1,8 +1,23 @@
+import { useSelector } from 'react-redux'
 import { useGetBooksQuery } from '../features/api/apiSlice'
 import Book from './Book'
 
 const Books = () => {
   const { data: books, isLoading, isError } = useGetBooksQuery()
+
+  // filter
+  const { filter, search } = useSelector((state) => state.filters)
+
+  const handleFilterByType = (dt) => {
+    if (filter === 'all') return true
+    if (filter === 'featured') return dt.featured
+    return true
+  }
+
+  const handleFilterBySearch = (dt) => {
+    if (search) return dt.name.toLowerCase().includes(search.toLowerCase())
+    return true
+  }
 
   // decide what to render
   let content = null
@@ -19,7 +34,10 @@ const Books = () => {
   }
 
   if (!isLoading && !isError && books?.length > 0) {
-    content = books.map((book) => <Book key={book.id} book={book} />)
+    content = books
+      .filter(handleFilterBySearch)
+      .filter(handleFilterByType)
+      .map((book) => <Book key={book.id} book={book} />)
   }
 
   return (
